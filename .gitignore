@@ -6,6 +6,7 @@
 !README.md
 !notebooks/
 !notebooks/champion_analysis.ipynb
+!data/lol_matches.csv
 
 # Still ignore checkpoints and other notebook artifacts
 .ipynb_checkpoints/
