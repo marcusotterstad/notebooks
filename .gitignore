@@ -1,16 +1,14 @@
 # Ignore everything by default
 *
 
-# But include these files/directories
+# But include these
 !.gitignore
 !README.md
 !notebooks/
-!notebooks/s15_analysis.ipynb
-!data/lol_matches.csv
+!notebooks/**
 
-# Still ignore checkpoints and other notebook artifacts
-.ipynb_checkpoints/
-*.ipynb_checkpoints
+# Ignore notebook artifacts
+**/.ipynb_checkpoints/
 __pycache__/
 *.pyc
 
