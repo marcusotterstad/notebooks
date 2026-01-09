@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'notebooks/**/*.ipynb'
+      - '.github/workflows/publish-notebooks.yml'
+  workflow_dispatch:  # Manual trigger from GitHub UI
 
 jobs:
   build-and-deploy:
