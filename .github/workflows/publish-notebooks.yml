@@ -41,7 +41,8 @@ jobs:
           destination-github-username: 'marcusotterstad'
           destination-repository-name: 'personal-website'
           target-directory: 'notebooks'
-          target-branch: main
+          target-branch: master
+          create-target-branch-if-needed: true
           commit-message: 'Auto-update notebooks'
           user-email: inet2@otterstad.name
           user-name: marcusotterstad
