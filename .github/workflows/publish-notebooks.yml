@@ -1,0 +1,45 @@
+name: Publish Notebooks to Blog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'notebooks/**/*.ipynb'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout analyses repo
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install nbconvert jupyter pandas numpy matplotlib seaborn yfinance
+      
+      - name: Convert notebooks to HTML
+        run: |
+          mkdir -p html_output
+          for notebook in notebooks/*.ipynb; do
+            jupyter nbconvert --to html "$notebook" --output-dir=html_output
+          done
+      
+      - name: Push to blog repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.BLOG_REPO_TOKEN }}
+        with:
+          source-directory: 'html_output'
+          destination-github-username: 'marcusotterstad'
+          destination-repository-name: 'personal-website'
+          target-directory: 'notebooks'
+          target-branch: main
+          commit-message: 'Auto-update notebooks'
+          user-email: inet2@otterstad.name
+          user-name: marcusotterstad

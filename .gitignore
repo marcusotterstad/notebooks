@@ -6,6 +6,8 @@
 !README.md
 !notebooks/
 !notebooks/**
+!.github/
+!.github/**
 
 # Ignore notebook artifacts
 **/.ipynb_checkpoints/
